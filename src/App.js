@@ -28,7 +28,7 @@ function App() {
     return (
         <div className="App">
             <header>
-                <h1>Let's Chat</h1>
+                <h1>Let's Chat 💬</h1>
                 <SignOut />
             </header>
 
@@ -45,7 +45,7 @@ function SignIn() {
 
     return (
         <div>
-            <button className="sign-in-btn" onClick={signinWithGoogle}>
+            <button className="sign-in" onClick={signinWithGoogle}>
                 Sign in
             </button>
             <p> Let's chat about the things, Have fun!</p>
@@ -57,7 +57,7 @@ function SignOut() {
     // if user is already signed in => signout button should be there
     return (
         auth.currentUser && (
-            <button className="sign-out-btn" onClick={() => auth.signOut()}>
+            <button className="sign-out" onClick={() => auth.signOut()}>
                 Sign Out
             </button>
         )
@@ -69,13 +69,21 @@ function ChatMessage(props) {
 
     // to style css class left and right side according to the message sent by users
 
-    const messageClass = uid === auth.currentUser.uid ? "sent" : "recieved";
+    const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
 
     return (
-        <div className={`message-${messageClass}`}>
-            <img src={photoURL} alt="user-profile" />
-            <p className={`message-${messageClass}-text`}>{text}</p>
-        </div>
+        <>
+            <div className={`message ${messageClass}`}>
+                <img
+                    src={
+                        photoURL ||
+                        "https://api.adorable.io/avatars/23/abott@adorable.png"
+                    }
+                    alt="user-profile"
+                />
+                <p>{text}</p>
+            </div>
+        </>
     );
 }
 
@@ -84,13 +92,14 @@ function ChatRoom() {
 
     const dummy = useRef();
     const messagesRef = firestore.collection("messages");
-    const query = messagesRef.orderBy("createdAt").limit(1000);
+    const query = messagesRef.orderBy("createdAt").limit(50);
     const [messages] = useCollectionData(query, { idField: "id" });
     const [formValue, setFormValue] = useState("");
 
     const sendMessage = async val => {
         val.preventDefault();
         const { uid, photoURL } = auth.currentUser;
+
         await messagesRef.add({
             text: formValue,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -102,14 +111,16 @@ function ChatRoom() {
     };
 
     return (
-        <div>
-            {messages &&
-                messages.map(msg => (
-                    <ChatMessage key={msg.uid} message={msg} />
-                ))}
+        <>
+            <main>
+                {messages &&
+                    messages.map(msg => (
+                        <ChatMessage key={msg.id} message={msg} />
+                    ))}
+                <span ref={dummy}></span>
+            </main>
             <form onSubmit={sendMessage}>
                 <input
-                    className="msg-box"
                     value={formValue}
                     onChange={val => setFormValue(val.target.value)}
                     placeholder="Enter message here.."
@@ -122,7 +133,7 @@ function ChatRoom() {
                     Send
                 </button>
             </form>
-        </div>
+        </>
     );
 }
 

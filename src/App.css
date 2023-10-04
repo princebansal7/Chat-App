@@ -1,165 +1,167 @@
-/* Reset some default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Set a background color and font for the entire app */
 body {
-    background-color: #f0f0f0;
+    background-color: #f3fff5;
     font-family: Arial, sans-serif;
 }
 
-/* Style the header section */
-header {
-    background-color: #333;
+.App {
+    text-align: center;
+    max-width: 728px;
+    margin: 0 auto;
+    border-radius: 50px;
+    margin-bottom: 50px;
+}
+
+.App header {
+    background-color: #06550f;
+    height: 10vh;
+    min-height: 50px;
+    color: white;
+    position: fixed;
+    width: 100%;
+    max-width: 728px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 99;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.App section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: rgb(1, 39, 36);
+    border-radius: 20px;
+}
+
+main {
+    padding: 10px;
+    height: 80vh;
+    margin: 10vh 0 10vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+}
+
+main::-webkit-scrollbar {
+    width: 0.25rem;
+    border-radius: 20px;
+}
+
+main::-webkit-scrollbar-track {
+    background: #818d47;
+    border-radius: 20px;
+}
+
+main::-webkit-scrollbar-thumb {
+    background: #a888ff;
+    border-radius: 20px;
+}
+
+form {
+    height: 10vh;
+    position: fixed;
+    bottom: 0;
+    background-color: rgb(31, 56, 7);
+    width: 100%;
+    max-width: 728px;
+    display: flex;
+    font-size: 1.5rem;
+    border-radius: 20px;
+}
+
+form button {
+    width: 20%;
+    background-color: rgb(132, 6, 146);
+}
+
+input {
+    line-height: 1.5;
+    width: 100%;
+    font-size: 1.5rem;
+    background: rgb(58, 58, 58);
+    color: white;
+    outline: none;
+    border: none;
+    padding: 0 10px;
+    border-radius: 20px;
+}
+
+button {
+    background-color: rgb(58, 58, 58); /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 1.25rem;
+    border-radius: 20px;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.sign-in {
+    color: #282c34;
+    background: white;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+ul,
+li {
+    text-align: left;
+    list-style: none;
+}
+
+p {
+    max-width: 500px;
+    margin-bottom: 12px;
+    line-height: 24px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    position: relative;
     color: white;
     text-align: center;
-    padding: 10px 0;
-    border-radius: 10px;
-    margin-bottom: 15px;
 }
 
-h1 {
-    text-align: left;
-    margin: 1px 10px;
-}
-/* Style the chat container */
-.App {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: rgb(21, 20, 20);
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Style the sign-in button */
-.sign-in-btn {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-.sign-in-btn:hover {
-    background-color: #45a049;
-}
-
-/* Style the sign-out button */
-.sign-out-btn {
-    border-radius: 4px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin-left: 400px;
-    cursor: pointer;
-}
-
-.sign-out-btn:hover {
-    background-color: #d32f2f;
-}
-
-/* Style the chat messages container */
-.messages {
-    max-height: 400px;
-    overflow-y: auto;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-/* Style individual chat messages */
-/* Style individual chat messages */
-.message-sent {
+.message {
     display: flex;
-    flex-direction: row-reverse;
-    margin-bottom: 10px;
-}
-
-.message-received {
-    display: flex;
-    margin-bottom: 10px;
-}
-
-.message-sent img,
-.message-received img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-/* Style the sender's message text */
-.message-sent-text {
-    color: rgb(17, 33, 2);
-    border: solid 1px wheat;
-    padding: 10px;
-    border-radius: 25px;
-    background-color: #d7e7e6;
-}
-
-/* Style the receiver's message text */
-.message-received-text {
-    color: rgb(17, 33, 2);
-    border: solid 1px wheat;
-    padding: 10px;
-    border-radius: 25px;
-    background-color: #d7e7e6;
-}
-
-/* Style the input form and send button */
-form {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
-input[type="text"] {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    color: #4caf50;
-}
-/* Style the chat input box */
-.chat-box {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px; /* Adjust the font size as needed */
+.sent {
+    flex-direction: row-reverse;
 }
 
-.chat-box:focus {
-    outline: none;
-    border-color: #0077a8; /* Change the border color on focus */
-}
-
-/* Style the submit button */
-.submit-btn {
-    background-color: #008cba;
+.sent p {
     color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px; /* Adjust the font size as needed */
-    margin-left: 10px;
+    background: #0a75c2;
+    align-self: flex-end;
+}
+.received p {
+    background: #fefffe;
+    color: black;
 }
 
-.submit-btn:hover {
-    background-color: #0077a8;
-}
-
-/* Responsive styles */
-@media (max-width: 600px) {
-    .App {
-        max-width: 100%;
-        padding: 10px;
-    }
+img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 2px 5px;
 }
