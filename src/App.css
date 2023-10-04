@@ -122,7 +122,12 @@ button:disabled {
     max-width: 400px;
     margin: 0 auto;
 }
-
+.sign-in-container p {
+    text-align: center;
+    /* background-color: #818d47; */
+    margin-top: 10px;
+    margin-left: 110px;
+}
 ul,
 li {
     text-align: left;

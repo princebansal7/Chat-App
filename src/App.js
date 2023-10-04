@@ -44,11 +44,11 @@ function SignIn() {
     };
 
     return (
-        <div>
+        <div className="sign-in-container">
             <button className="sign-in" onClick={signinWithGoogle}>
                 Sign in
             </button>
-            <p> Let's chat about the things, Have fun!</p>
+            <p> It's secured to login via Google, Have fun!</p>
         </div>
     );
 }
